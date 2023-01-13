@@ -82,8 +82,9 @@ button:hover {
 }
 
 .ok {
-    font-size: 4rem;
-    color: lightgreen;
+    font-size: 10rem;
+    /* color: lightgreen; */
+    color: green;
     animation: submit-form 2s ease-in-out;
 }
 
