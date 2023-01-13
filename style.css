@@ -9,6 +9,28 @@ body {
     padding-top: 2rem;
 }
 
+form {
+    display: none;
+    min-width: 354px;
+    animation: dropdown 1.5s ease-in-out;
+}
+
+form.animated {
+    display: block
+}
+
+@keyframes dropdown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 ul {
     list-style: none;
     padding: 0;
@@ -33,6 +55,7 @@ label {
 
 input {
     padding: 5px;
+    width: 100%;
 }
 
 input.error {
@@ -56,4 +79,20 @@ button:active {
 
 button:hover {
     cursor: pointer;
+}
+
+.ok {
+    font-size: 4rem;
+    color: lightgreen;
+    animation: submit-form 2s ease-in-out;
+}
+
+@keyframes submit-form {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

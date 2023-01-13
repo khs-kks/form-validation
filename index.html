@@ -12,37 +12,40 @@
 </head>
 
 <body>
-    <form>
-        <ul>
-            <li class="field">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" required pattern="^[a-zA-Z0-9]+@.*\.[a-zA-Z]*">
-                <span></span>
-            </li>
-            <li class="field">
-                <label for="country">Country</label>
-                <input type="text" name="country" id="country" required class="error">
-                <span>Passwords do not match</span>
-            </li>
-            <li class="field">
-                <label for="zip">Zip</label>
-                <input type="tel" name="zip" id="zip" required>
-                <span></span>
-            </li>
-            <li class="field">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" required>
-                <span></span>
-            </li>
-            <li class="field">
-                <label for="confirmpassword">Confirm password</label>
-                <input type="password" name="confirmpassword" id="confirmpassword" required>
-                <span></span>
-            </li>
-            <button type="submit">Submit</button>
+    <form novalidate>
+        <fieldset>
+            <legend>All fields are required</legend>
+            <ul>
+                <li class="field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required pattern="^[a-zA-Z0-9]+@.*\.[a-zA-Z]*">
+                    <span></span>
+                </li>
+                <li class="field">
+                    <label for="country">Country</label>
+                    <input type="text" name="country" id="country" required minlength="5" maxlength="45">
+                    <span></span>
+                </li>
+                <li class="field">
+                    <label for="zip">Zip</label>
+                    <input type="tel" name="zip" id="zip" required minlength="3">
+                    <span></span>
+                </li>
+                <li class="field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required minlength="12" maxlength="50"
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$">
+                    <span></span>
+                </li>
+                <li class="field">
+                    <label for="confirmpassword">Confirm password</label>
+                    <input type="password" name="confirmpassword" id="confirmpassword" required>
+                    <span></span>
+                </li>
+                <button type="submit">Submit</button>
 
-        </ul>
-
+            </ul>
+        </fieldset>
     </form>
 </body>
 
