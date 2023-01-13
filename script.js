@@ -25,9 +25,11 @@ function checkPasswords() {
   const spanConfirmPassword = inputs[4].nextElementSibling;
 
   if (!inputs[3].checkValidity()) {
-    inputs[3].classList.add("error");
-    spanPassword.textContent =
-      "1 uppercase, 1 lowercase, 1 digit. Min 12 symbols";
+    if (inputs[3].value !== "") {
+      inputs[3].classList.add("error");
+      spanPassword.textContent =
+        "1 uppercase, 1 lowercase, 1 digit. Min 12 symbols";
+    }
   } else if (inputs[3].value !== inputs[4].value && inputs[4].value) {
     inputs[3].classList.add("error");
     inputs[4].classList.add("error");
@@ -46,24 +48,28 @@ function renderOK() {
   body.innerHTML = "";
   body.classList.add("ok");
   body.textContent = "OK!";
-  
 }
 
 function init() {
   inputs.forEach((input) => {
     input.addEventListener("blur", () => {
+      const span = input.nextElementSibling;
+      if (input.value === "") {
+        input.classList.remove("error");
+        span.textContent = "";
+      }
       if (input.id === "password" || input.id === "confirmpassword") {
         checkPasswords();
         return;
       }
 
-      const span = input.nextElementSibling;
-
-      if (input.checkValidity()) {
-        input.classList.remove("error");
-        span.textContent = "";
-      } else if (!input.checkValidity()) {
-        showError(input, span);
+      if (input.value !== "") {
+        if (input.checkValidity()) {
+          input.classList.remove("error");
+          span.textContent = "";
+        } else if (!input.checkValidity()) {
+          showError(input, span);
+        }
       }
     });
   });
